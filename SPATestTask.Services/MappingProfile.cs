@@ -7,7 +7,7 @@ using SPATestTask.Services.Dto;
 
 namespace SPATestTask.Services
 {
-    class MappingProfile : Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
