@@ -12,10 +12,10 @@ namespace SPATestTask.DAL.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class, IEntity
     {
-        public Repository(DbContextSPATestTask contextDictionaryOfWords)
+        public Repository(DbContextSPATestTask contextSpaTestTask)
         {
-            contextDictionaryOfWords = contextDictionaryOfWords;
-            dbSet = contextDictionaryOfWords.Set<T>();
+            this.contextSpaTestTask = contextSpaTestTask;
+            dbSet = contextSpaTestTask.Set<T>();
         }
         protected DbContextSPATestTask contextSpaTestTask;
         protected DbSet<T> dbSet { get; set; }

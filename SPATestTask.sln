@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPATestTask.Core", "SPATest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPATestTask.DAL", "SPATestTask.DAL\SPATestTask.DAL.csproj", "{1B8DC65D-71AF-4379-8152-D10633840724}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPATestTask.Services", "SPATestTask.Services\SPATestTask.Services.csproj", "{BB1F03C2-6CB5-41C7-A171-6EAEF7B36F94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1B8DC65D-71AF-4379-8152-D10633840724}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B8DC65D-71AF-4379-8152-D10633840724}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B8DC65D-71AF-4379-8152-D10633840724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB1F03C2-6CB5-41C7-A171-6EAEF7B36F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB1F03C2-6CB5-41C7-A171-6EAEF7B36F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB1F03C2-6CB5-41C7-A171-6EAEF7B36F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB1F03C2-6CB5-41C7-A171-6EAEF7B36F94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

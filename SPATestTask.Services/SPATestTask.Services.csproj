@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SPATestTask.Core\SPATestTask.Core.csproj" />
+    <ProjectReference Include="..\SPATestTask.DAL\SPATestTask.DAL.csproj" />
+  </ItemGroup>
+
+</Project>
