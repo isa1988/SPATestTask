@@ -1,0 +1,44 @@
+<p>user works!</p>
+
+<div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+  <div class="logo">
+    <a class="nav-link">
+      <button mat-raised-button
+        (click)= "openCreateDialog()"
+      >
+        Создать пользователя
+      </button>
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li *ngFor="let user of users; let index = index" [class.active]="user === selectedUser"
+
+          (mouseleave)="showEditIcon(null)"
+          (mouseenter)="showEditIcon(index)"
+      >
+
+        <a class="nav-link">
+          <span class="user-title">{{user.userName}}</span>
+          <!--         кнопка редактирования пользователя-->
+          <span class="edit-user-icon-area">
+            <mat-icon
+              *ngIf="indexMouseMove === index"
+              (click)= "openEditDialog(user)"
+              class="edit-user-icon"
+            >edit
+            </mat-icon>
+
+            <mat-icon
+              *ngIf="indexMouseMove === index"
+              (click)= "openDeleteDialog(user)"
+              class="edit-user-icon"
+            >delete
+            </mat-icon>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>
