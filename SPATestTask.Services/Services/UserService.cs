@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using AutoMapper;
@@ -11,7 +11,7 @@ namespace SPATestTask.Services.Services
 {
     public class UserService : GeneralService<User, UserDto, int>, IUserService
     {
-        public UserService(UserDto empty, IMapper mapper, IUserRepository repository) : base(empty, mapper, repository)
+        public UserService(IMapper mapper, IUserRepository repository) : base(new UserDto(), mapper, repository)
         {
         }
 
@@ -25,7 +25,7 @@ namespace SPATestTask.Services.Services
 
         protected override string CkeckBeforeDelete(User value)
         {
-            throw new NotImplementedException();
+            return string.Empty;
         }
     }
 }

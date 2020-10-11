@@ -1,4 +1,4 @@
-﻿using SPATestTask.Core.DataBase;
+using SPATestTask.Core.DataBase;
 using SPATestTask.Services.Dto;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace SPATestTask.Services.Services
 {
     public abstract class GeneralService<T, TDto> : IGeneralService<T, TDto>
         where T : class, IEntity
-        where TDto : class, IDto
+        //where TDto : class
 
     {
         public GeneralService(TDto dtoEmpty,
@@ -82,7 +82,7 @@ namespace SPATestTask.Services.Services
 
     public abstract class GeneralService<T, TDto, TId> : GeneralService<T, TDto>, IGeneralService<T, TDto, TId>
         where T : class, IEntity<TId>
-        where TDto : class, IDto<TId>
+        //where TDto : class
         where TId : IEquatable<TId>
     {
         protected readonly IRepository<T, TId> repositoryId;
@@ -108,7 +108,7 @@ namespace SPATestTask.Services.Services
                 T value = mapper.Map<T>(updateDto);
                 repositoryId.Update(value);
                 repositoryId.Save();
-                var entity = repositoryId.GetById(updateDto.Id);
+                var entity = repositoryId.GetById(value.Id);
                 return EntityOperationResult<T>.Success(entity);
             }
             catch (Exception ex)

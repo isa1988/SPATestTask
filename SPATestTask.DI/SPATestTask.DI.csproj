@@ -9,4 +9,8 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SPATestTask.Services\SPATestTask.Services.csproj" />
+  </ItemGroup>
+
 </Project>

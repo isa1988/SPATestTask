@@ -1,18 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using SPATestTask.API.AppStart;
+using SPATestTask.Core.Repositories;
 using SPATestTask.DAL.Data.DbInitializer;
+using SPATestTask.DAL.Repositories;
+using SPATestTask.Services.Services;
+using SPATestTask.Services.Services.Contracts;
 
 namespace SPATestTask.API
 {
@@ -28,16 +26,30 @@ namespace SPATestTask.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin",
+                    builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
+
+            services.AddControllersWithViews();
+            services.AddSession();
+
+            services.AddMemoryCache();
             services.AddDatabaseContext(Configuration);
             services.AddAutoMapperCustom();
             services.AddScoped<IDbInitializer, DbInitializer>();
-            services.AddControllers();
+      
             return new AutofacServiceProvider(services.ConfigureAutofac());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public async void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
+            app.UseCors("AllowAnyOrigin");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -47,7 +59,6 @@ namespace SPATestTask.API
 
             app.UseRouting();
 
-            await dbInitializer.Initialize();
 
             app.UseAuthorization();
 
@@ -55,6 +66,8 @@ namespace SPATestTask.API
             {
                 endpoints.MapControllers();
             });
+
+            dbInitializer.Initialize();
         }
     }
 }

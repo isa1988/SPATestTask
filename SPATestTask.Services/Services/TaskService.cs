@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using AutoMapper;
@@ -11,7 +11,7 @@ namespace SPATestTask.Services.Services
 {
     public class TaskService : GeneralService<Task, TaskDto, int>, ITaskService
     {
-        public TaskService(TaskDto empty, IMapper mapper, ITaskRepository repository) : base(empty, mapper, repository)
+        public TaskService(IMapper mapper, ITaskRepository repository) : base(new TaskDto(), mapper, repository)
         {
         }
 
